@@ -8,7 +8,6 @@
     "buildServe": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
     "@zeit/next-sass": "^1.0.1",
     "next": "9.4.4",
     "node-sass": "^4.14.1",
