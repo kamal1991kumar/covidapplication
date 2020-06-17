@@ -1,17 +1,12 @@
-import Layout from '../components/Layout';
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import Layout from '../components/Layout';
+import LoginPageView from '../views/LoginPageView';
 
+export default function LoginPage( props ) {
 
-
-export default function IndexPage() {
-
-  return (
-    <Layout>
-       <Card>
-       hwllo
-    </Card>
-    </Layout>
-  )
+    return (
+        <Layout>
+            <LoginPageView />
+        </Layout>
+    );
 }

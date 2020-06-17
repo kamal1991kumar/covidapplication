@@ -1,0 +1,8 @@
+.heading {
+    padding-bottom: 5px;
+    &--h3 {
+        @extend .f500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
