@@ -5,4 +5,9 @@
         font-size: 16px;
         line-height: 20px;
     }
+    &--h6 {
+        @extend .f100;
+        font-size: 12px;
+        line-height: 14px;
+    }
 }
