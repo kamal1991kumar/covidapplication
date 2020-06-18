@@ -1,73 +1,20 @@
 import React from 'react';
 
-export default function ModalView() {
+export default function ModalView( props ) {
 
-    return null;
+    const { closeHandler, title } = props;
 
     return(
         <div className='modal'>
             <div className='modal__container'>
                 <div className='modal__head'>
-                    <h3 className='heading heading--h3'>Add Task</h3>
-                    <div className='modal__close'>
+                    <h3 className='heading heading--h3'>{ title }</h3>
+                    <div className='modal__close' onClick={ closeHandler }>
                         <img src='/images/close.svg' alt='close' />
                     </div>
                 </div>
                 <div className='modal__body'>
-                    <div className='taskForm'>
-                        <div className='grid'>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Brief</h6>
-                                <div className='inputField'>
-                                    <input type='text' className='inputField__input' value='' />
-                                </div>
-                            </div>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Location</h6>
-                                <div className='inputField'>
-                                    <select className='inputField__input'>
-                                        <option>Select Location</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='grid'>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Man Power</h6>
-                                <div className='inputField'>
-                                    <input type='text' className='inputField__input' value='' />
-                                </div>
-                            </div>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Assign to</h6>
-                                <div className='inputField'>
-                                    <select className='inputField__input'>
-                                        <option>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='grid'>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Area</h6>
-                                <div className='inputField'>
-                                    <select className='inputField__input'>
-                                        <option>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className='grid--6'>
-                                <h6 className='heading heading--h6'>Timings</h6>
-                                <div className='inputField'>
-                                    <select className='inputField__input'>
-                                        <option>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <button className='btn btn__parimary'>Save</button>
-                    </div>
+                    { props.children }
                 </div>
             </div>
         </div>

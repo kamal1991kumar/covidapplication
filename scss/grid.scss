@@ -2,10 +2,13 @@
 .grid {
     display: flex;
     justify-content: space-between;
+    &--8 {
+        width: calc( 66.33% - 10px );
+    }
     &--6 {
         width: calc( 50% - 10px );
     }
     &--4 {
-        width: calc( 30% - 10px );
+        width: calc( 33.33% - 10px );
     }
 }

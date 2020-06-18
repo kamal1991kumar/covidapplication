@@ -1,4 +1,5 @@
 import React from 'react';
+import OpenCloseHoc from '../hoc/openCloseHoc';
 
 export default function HeaderView() {
 
@@ -19,7 +20,7 @@ export default function HeaderView() {
                         <li>
                             <div>
                                 <img src='./images/clock.svg' alt='Dashboard' width='15' />
-                                <span>My Idea</span>
+                                <span>My Tasks</span>
                             </div>
                         </li>
                     </ul>
@@ -30,13 +31,24 @@ export default function HeaderView() {
                     <img src='/images/bell.svg' alt='bell' width='20'/>
                     <span>3</span>
                 </div>
-                <div className='header__userinfo__profile'>
-                    <img src='/images/default-avatar.png' alt='avatar' width='20'/>
-                    <ul>
-                        <li>Edit</li>
-                        <li>Logout</li>
-                    </ul>
-                </div>
+                <OpenCloseHoc render={ ( payload ) => {
+
+                    const { isOpen, onHandleClick, ref } = payload;
+
+                    return(
+                        <div className='header__userinfo__profile' ref={ref}>
+                            <img src='/images/default-avatar.png' alt='avatar' width='20' onClick={onHandleClick} />
+                            { !isOpen ? null :
+                                <ul>
+                                    <li>Edit</li>
+                                    <li>Logout</li>
+                                </ul>
+                            }
+                            
+                        </div>
+                    );
+
+                } } />
             </div>
         </header>
     );

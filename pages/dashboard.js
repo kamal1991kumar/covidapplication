@@ -1,16 +1,14 @@
 import Layout from '../components/Layout';
 import Header from '../views/HeaderView';
 import SubHeaderView from '../views/SubHeaderView';
-import ModalView from '../views/ModalView';
 import RecentTaskListView from '../views/RecentTaskListView';
 import TaskAreaView from '../views/TaskAreaView';
 
 export default function DashBoardPage() {
     return (
         <Layout>
-            <ModalView />
             <Header />
-            <SubHeaderView />
+            <SubHeaderView  pageTitle='Dashboard' />
             <div className='container dashboard'>
                 <div className='grid'>
                     <div className='grid--6'>
