@@ -1,0 +1,36 @@
+.table {
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+    border-spacing: 0;
+    th {
+        padding:15px 20px;
+        border-bottom: solid 1px #ccc;
+        white-space: nowrap;
+        width: 100%;
+    }
+    td {
+        padding:7px 20px;
+        white-space: nowrap;
+        
+    }
+    tbody {
+        tr:first-child td{
+            padding-top: 20px;
+        }
+        tr:last-child td{
+            padding-bottom: 20px;
+        }
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        padding: 4px;
+        border: solid 1px $color-parimary;
+        border-radius: 100%;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+}

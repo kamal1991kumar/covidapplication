@@ -9,6 +9,11 @@ export default function SubHeaderView() {
                         <h3 className='heading heading--h3'>Dashboard</h3>
                     </div>
                     <div className='subHeader__right'>
+                        <div className='inputField'>
+                            <select className='inputField__input'>
+                                <option>Select Location</option>
+                            </select>
+                        </div>
                         <button className='btn btn__parimary'>Add Task</button>
                     </div>
                 </div>

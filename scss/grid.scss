@@ -1,0 +1,11 @@
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    &--6 {
+        width: calc( 50% - 10px );
+    }
+    &--4 {
+        width: calc( 30% - 10px );
+    }
+}

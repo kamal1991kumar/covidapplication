@@ -5,6 +5,11 @@
         font-size: 16px;
         line-height: 20px;
     }
+    &--h4 {
+        @extend .f500;
+        font-size: 15px;
+        line-height: 18px;
+    }
     &--h6 {
         @extend .f100;
         font-size: 12px;

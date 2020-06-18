@@ -11,4 +11,10 @@
             padding-bottom: 0;
         }
     }
+    &__right {
+        display: flex;
+        .btn {
+            margin-left: 20px;
+        }
+    }
 }
