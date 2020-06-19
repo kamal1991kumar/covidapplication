@@ -24,7 +24,7 @@ export default function SubHeaderView( props ) {
                         </div>
                         <div className='subHeader__right'>
                             <div className='inputField'>
-                                <select className='inputField__input'>
+                                <select className='inputField__select'>
                                     <option>Select Location</option>
                                 </select>
                             </div>

@@ -5,12 +5,12 @@ export default function TaskAreaView() {
 
     return (
         <div className='taskArea'>
-            <h4 className='heading heading--h4'>Tasks Area</h4>
+            <h4 className='heading heading--h4'>Tasks Categories</h4>
             <div className='card card--mb20'>
                 <div className='card__content'>
                     <ul className='taskArea__listing'>
                         {
-                            ['Lobby', 'Reception', 'Washroom', 'IT Lobby', 'Room', 'Washroom', 'Cafe Area', 'Washroom'].map((item) => {
+                            ['Cleaning', 'Sanitiser', 'Tissues', 'Rearranging', 'Cleaning', 'Keeping Sanitiser', 'Tissues', 'Rearranging' ].map((item) => {
                                 return (
                                     <Link href='/listing'>
                                         <li className='taskArea__listing__item'>

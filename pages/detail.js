@@ -1,13 +1,8 @@
-import Layout from '../components/Layout';
-import Header from '../views/HeaderView';
 import SubHeaderView from '../views/SubHeaderView';
-import RecentTaskListView from '../views/RecentTaskListView';
-import TaskAreaView from '../views/TaskAreaView';
 
 export default function DetailPage() {
     return (
-        <Layout>
-            <Header />
+        <>
             <SubHeaderView pageTitle='Task Detail' />
             <div className='container detailPage'>
                 <div className='card'>
@@ -66,6 +61,6 @@ export default function DetailPage() {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 }

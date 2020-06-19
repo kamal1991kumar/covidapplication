@@ -41,8 +41,20 @@ body {
     line-height: 13px;
 }
 
+a {
+  color: $color-action;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .container {
   width: 960px;
   margin: auto;
 }
 
+
+.cursorPointer {
+  cursor: pointer;
+}
