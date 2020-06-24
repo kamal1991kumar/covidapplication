@@ -5,6 +5,13 @@ export default function RecentTaskListView() {
 
     return (
         <div className='card card--mb20'>
+            <div className='grid-inner'>
+             <h4 className='heading heading--h4'>Recent Task</h4>
+             <a href='#'>
+                                {/* <img src='/images/download.svg' width='15' /> */}
+                                <select className='inputField__select '>  <option>Download Report</option></select>
+                            </a> 
+                            </div>
             <table className='table'>
                 <thead>
                     <tr>
@@ -52,6 +59,7 @@ const TableBodyRow = () => {
                 <Tooltip title='Delete'>
                     <div className='table__icon'>
                         <img src='/images/trash.svg' alt='approved' />
+                        {/* <i className="fa fa-trash-o trash" ></i> */}
                     </div>
                 </Tooltip>
             </td>

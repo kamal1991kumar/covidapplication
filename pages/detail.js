@@ -42,8 +42,11 @@ export default function DetailPage() {
                             </div>
                             <div className='grid--4'>
                                 <h4 className='heading heading--h4'>Images</h4>
-                                <div className='inputField'>
-                                    <input type='file' className='inputField__file' />
+                                <div className='inputField' >
+                                <label class="custom-file-upload">
+                                    <input type='file'  className='inputField__file' />
+                                    Upload
+                                    </label>
                                 </div>
                             </div>
                             <div className='grid--4'>&nbsp;</div>

@@ -1,26 +1,26 @@
 @font-face {
-    font-family: "Avenir";
+    font-family: inherit;
     font-style: normal;
     font-weight: normal;
     src: url("../public/fonts/AvenirLTStd-Book.otf") format("opentype"),
     url("../public/fonts/AvenirLTStd-BookOblique.otf") format("opentype");
 }
 @font-face {
-    font-family: "AvenirBold";
+    font-family: inherit;
     font-style: normal;
     font-weight: normal;
     src: url("../public/fonts/AvenirLTStd-Heavy.otf") format("opentype"),
     url("../public/fonts/AvenirLTStd-HeavyOblique.otf") format("opentype");
 }
 @font-face {
-    font-family: "AvenirLight";
+    font-family: inherit;
     font-style: normal;
     font-weight: normal;
     src: url("../public/fonts/AvenirLTStd-Light.otf") format("opentype"),
     url("../public/fonts/AvenirLTStd-LightOblique.otf") format("opentype");
 }
 @font-face {
-    font-family: "AvenirMeduim";
+    font-family: inherit;
     font-style: normal;
     font-weight: normal;
     src: url("../public/fonts/AvenirLTStd-Medium.otf") format("opentype"),
@@ -28,11 +28,11 @@
 }
 
 .f-normal {
-    font-family: "Avenir";
+    font-family: inherit;
 }
 .f100 {
-    font-family: AvenirLight;
+    font-family: inherit;
 }
 .f500 {
-    font-family: AvenirMeduim;
+    font-family: inherit;
 }

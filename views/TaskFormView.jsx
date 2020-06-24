@@ -69,8 +69,10 @@ export default function TaskFormView() {
                         <input type='file' className='inputField__file' />
                     </div>
                 </div>
-            </div>               
-            <button className='btn btn__parimary'>Save</button>
+            </div>      
+                     
+            <button className='btn  rightbtn'>Save</button>
+            
         </div>
     );
 

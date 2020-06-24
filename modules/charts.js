@@ -1,4 +1,4 @@
-import { cloneDeepWith } from "lodash";
+ import { cloneDeepWith } from "lodash";
 
 const options = {
     credits: {
@@ -49,7 +49,7 @@ export const chart = {
                         enabled: false
                     },
                     borderWidth: 0,
-                    colors: ["#9D92B2", "#06A99C", "#dc6346"],
+                    colors: ["#09554F", "#25D0C1", "#1DA89C"],
                     showInLegend: true
                 }
             },
@@ -93,15 +93,15 @@ export const chart = {
             },
             series: [{
                 name: 'Pending',
-                color: '#9D92B2',
+                color: '#09554F',
                 data: [5, 3, 4, 7, 2]
             }, {
                 name: 'Completed',
-                color: '#06A99C',
+                color: '#25D0C1',
                 data: [2, 2, 3, 2, 1]
             }, {
                 name: 'Upcoming',
-                color: '#dc6346',
+                color: '#1DA89C',
                 data: [3, 4, 4, 2, 5]
             }]
         };

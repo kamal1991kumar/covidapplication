@@ -12,3 +12,9 @@
         width: calc( 33.33% - 10px );
     }
 }
+
+.grid-inner{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px ;
+}
