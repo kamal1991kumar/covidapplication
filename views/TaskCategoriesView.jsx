@@ -7,7 +7,9 @@ export default function TaskAreaView() {
         <div className='taskArea'>
            
             <div className='card card--mb20'>
-            <h4 className='heading heading--h4'>Tasks Categories</h4>
+            <div className='grid-inner'>
+            <h4 className='heading--h4'>Tasks Categories</h4>
+            </div>
                 <div className='card__content'>
                     <ul className='taskArea__listing'>
                         {
