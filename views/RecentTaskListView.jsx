@@ -6,7 +6,7 @@ export default function RecentTaskListView() {
     return (
         <div className='card card--mb20'>
             <div className='grid-inner'>
-             <h4 className='heading heading--h4'>Recent Task</h4>
+             <h4 className='heading--h4'>Recent Task</h4>
              <a href='#'>
                                 {/* <img src='/images/download.svg' width='15' /> */}
                                 <select className='inputField__select '>  <option>Download Report</option></select>

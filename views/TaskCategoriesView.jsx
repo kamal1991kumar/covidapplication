@@ -11,15 +11,17 @@ export default function TaskAreaView() {
                 <div className='card__content'>
                     <ul className='taskArea__listing'>
                         {
-                            ['Cleaning', 'Sanitiser', 'Tissues', 'Rearranging', 'Cleaning', 'Keeping Sanitiser', 'Tissues', 'Rearranging' ].map((item) => {
+                            ['Sanitiser', 'Cleaning', 'Washing Hands', 'Tissue box','Sanitiser', 'Cleaning', 'Washing Hands' ].map((item) => {
                                 return (
                                     <Link href='/listing'>
                                         <li className='taskArea__listing__item'>
                                             <img
-                                                // src={`http://placehold.jp/12/6b4d66/ffffff/100x100.png?text=${item}`}
+                                                 src={`/images/${item}.png`}
                                                 
-                                                src='/images/clean.png'
+                                                
                                                 alt='img'
+                                                // height='60%'
+                                                // width='50%'
                                             />
                                             <div className='taskArea__listing__label'>{item}</div>
                                         </li>
