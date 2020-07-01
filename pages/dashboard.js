@@ -23,22 +23,11 @@ export default function DashBoardPage() {
                             </a> 
                             </div>
                             <div className='grid'>
-                        {/* <h4 className='heading heading--h4'>Today Report</h4>
-                            <a href='#'>
-                                {/* <img src='/images/download.svg' width='15' /> */}
-                                {/* <button className='downloadbtn '> Download Report &nbsp;&nbsp;<img src='/images/download.svg' width='15' /></button> */}
-                            {/* </a> */} 
                             </div>
                             <ChartView />
                         </div>
                     </div>
                     <div className='grid--6'>
-                        {/* <div className='grid'>
-                            <h4 className='heading heading--h4'>Tasks Stats</h4>
-                            <a href='#'>
-                            <select className='inputField__select '>  <option>Download Report</option></select>
-                            </a>
-                        </div> */}
                         <div className='card card--mb20'>
                         <div className='grid-inner'>
                         <h4 className=' heading--h4'>Today Report</h4>
