@@ -10,7 +10,7 @@ export default function HeaderView() {
     return (
         <header className='header'>
             <div className='header__logo'>
-                <img src='/images/Logo-white.svg' alt='Xebia' width='85' />
+                <Link href='/'><img src='/images/Logo-white.svg' alt='Xebia' width='85' /></Link>
             </div>
             <div className='header__navigation'>
                 <div className=''>

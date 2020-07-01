@@ -32,6 +32,14 @@ export default function SubHeaderView( props ) {
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
                             >Add Task</button>
+                            <button
+                                className='btn btn__parimary'
+                                onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
+                            >Add Area</button>
+                            <button
+                                className='btn btn__parimary'
+                                onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
+                            >Add Category</button>
                         </div>
                     </div>
                 </div>

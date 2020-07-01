@@ -8,7 +8,7 @@ export default function TaskFormView() {
                 <div className='grid--6'>
                     <h6 className='heading heading--h6'>Brief</h6>
                     <div className='inputField'>
-                        <input type='text' className='inputField__input' value='' />
+                        <input type='text' className='inputField__input' value='Asd' />
                     </div>
                 </div>
                 <div className='grid--6'>
@@ -69,10 +69,13 @@ export default function TaskFormView() {
                         <input type='file' className='inputField__file' />
                     </div>
                 </div>
-            </div>      
-                     
-            <button className='btn  rightbtn'>Save</button>
-            
+            </div>
+            <div className='grid'>
+                <div className='grid--6'>&nbsp;</div>
+                <div className='grid--6 text-right'>
+                    <button className='btn btn__parimary'>Save</button>
+                </div>
+            </div>
         </div>
     );
 

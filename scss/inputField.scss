@@ -4,51 +4,35 @@
     
     .loader {
         position: absolute;
-        right: 6px;
-        top: 6px;
+        right: 11px;
+        top: 11px;
     }
     &__input, &__select, &__textarea {
-        border: solid 1px #999;
+        border: solid 1px #DEDEDE;
         width: 100%;
-        border-radius: 2px;
+        border-radius: 4px;
         color: #5a5a5a;
         @extend .f100;
         background: #fff;
         
     }
     &__input {
-        // height: 30px;
-        padding:0 7px;
-        line-height: 30px;
-        width: 100%     ;
-        height: 38px;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        border: 1px solid #DEDEDE;
-        border-radius: 4px;
-        opacity: 1;
-        padding: 10px;
+        padding: 8px;
+        &::placeholder {
+            color: #999;
+            font-size: 12px;
+        }
     }
     
 
     &__select {
-        // height: 30px;
-        // padding:4px 7px 0 4px;
-        // top: 81px;
-        // left: 1347px;
-        width: 100%;
-        height: 38px;
-        // background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        border: 1px solid #DEDEDE;
-        border-radius: 4px;
-        opacity: 1;
-        padding: 7px;
+        padding: 7px 7px 7px 3px;
     }
 
     &__textarea {
         resize: none;
         height: 50px;
-        padding: 7px;
+        padding: 8px;
     }
 
     &__message {

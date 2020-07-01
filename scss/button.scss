@@ -1,7 +1,7 @@
 .btn {
     @extend .f-normal;
     border: none;
-    padding: 8px 20px 6px;
+    padding: 10px 20px 9px;
     text-align: center;
     cursor: pointer;
     border-radius: 3px;
@@ -29,20 +29,3 @@
         background:$color-disabled;
     }
 }
-
-.rightbtn{
-    margin-left: 88%;
-    background:#1DA89C;
-    color: #fff;
- }
-
- .downloadbtn{
-     border: 1px solid gray;
-     padding: 4px 10px 3px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: 12px;
-
-    background-color: white;
- }

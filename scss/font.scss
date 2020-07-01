@@ -1,38 +1,46 @@
 @font-face {
-    font-family: "Proxima Nova";
+    font-family: "ProximaNova-Regular";
     font-style: normal;
     font-weight: normal;
-    src: url("../public/fonts/AvenirLTStd-Book.otf") format("opentype"),
-    url("../public/fonts/AvenirLTStd-BookOblique.otf") format("opentype");
+    src: url("../public/fonts/ProximaNova-Regular.ttf") format("truetype");
 }
 @font-face {
-    font-family: "Proxima Nova";
+    font-family: "ProximaNova-Light";
     font-style: normal;
     font-weight: normal;
-    src: url("../public/fonts/AvenirLTStd-Heavy.otf") format("opentype"),
-    url("../public/fonts/AvenirLTStd-HeavyOblique.otf") format("opentype");
+    src: url("../public/fonts/ProximaNova-Light.ttf") format("truetype");
 }
 @font-face {
-    font-family:"Proxima Nova";
+    font-family: "ProximaNova-Semibold";
     font-style: normal;
     font-weight: normal;
-    src: url("../public/fonts/AvenirLTStd-Light.otf") format("opentype"),
-    url("../public/fonts/AvenirLTStd-LightOblique.otf") format("opentype");
+    src: url("../public/fonts/ProximaNova-Semibold.ttf") format("truetype");
 }
 @font-face {
-    font-family:"Proxima Nova";
+    font-family: "ProximaNova-Bold";
     font-style: normal;
     font-weight: normal;
-    src: url("../public/fonts/AvenirLTStd-Medium.otf") format("opentype"),
-    url("../public/fonts/AvenirLTStd-MediumOblique.otf") format("opentype");
+    src: url("../public/fonts/ProximaNova-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "ProximaNova-Black";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../public/fonts/ProximaNova-Black.ttf") format("truetype");
 }
 
 .f-normal {
-    font-family:"Proxima Nova";
+    font-family:"ProximaNova-Regular";
 }
 .f100 {
-    font-family: "Proxima Nova";
+    font-family: "ProximaNova-Light";
 }
 .f500 {
-    font-family: "Proxima Nova";
+    font-family: "ProximaNova-Semibold";
+}
+.f700 {
+    font-family: "ProximaNova-Bold";
+}
+.f900 {
+    font-family: "ProximaNova-Black";
 }
