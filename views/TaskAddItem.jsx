@@ -6,7 +6,7 @@ export default function TaskAddItem() {
         <div className='taskForm'>
             <div className='grid'>
                 <div className='grid--6'>
-                    <h6 className='heading heading--h6'>Brief</h6>
+                    <h6 className='heading heading--h6'>Item Name</h6>
                     <div className='inputField'>
                         <input type='text' className='inputField__input' value='' />
                     </div>
