@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import ModalView from '../views/ModalView';
 import TaskFormComponent from '../components/TaskFormComponent';
+import AddAreaComponent from '../components/AddAreaComponent';
+import AddItemComponent from '../components/AddItemComponent';
 
 export default function SubHeaderView( props ) {
 
     const { pageTitle } = props;
 
     const [ state, setState ] = useState( { 
-        showTaskFrom: false
+        showTaskFrom: false,
+        showAddarea: false,
+        showAddItem: false
     } );
 
     const updateState = ( payload ) => {
@@ -32,6 +36,14 @@ export default function SubHeaderView( props ) {
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
                             >Add Task</button>
+                             <button
+                                className='btn btn__parimary'
+                                onClick={ () => updateState( { showAddarea: !state.showAddarea } ) }
+                            >Add Area</button>
+                             <button
+                                className='btn btn__parimary'
+                                onClick={ () => updateState( { showAddItem: !state.showAddItem } ) }
+                            >Add Item</button>
                         </div>
                     </div>
                 </div>
@@ -42,6 +54,22 @@ export default function SubHeaderView( props ) {
                     title='Add Task'
                 >
                     <TaskFormComponent />
+                </ModalView>
+            }
+             { !state.showAddarea ? null :
+                <ModalView
+                    closeHandler={ () => updateState( { showAddarea: !state.showAddarea } ) }
+                    title='Add Area'
+                >
+                    <AddAreaComponent />
+                </ModalView>
+            }
+             { !state.showAddItem ? null :
+                <ModalView
+                    closeHandler={ () => updateState( { showAddItem: !state.showAddItem } ) }
+                    title='Add Area'
+                >
+                    <AddItemComponent />
                 </ModalView>
             }
         </React.Fragment>
