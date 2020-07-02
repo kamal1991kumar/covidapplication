@@ -10,7 +10,7 @@ Axios.interceptors.response.use( function( response ){
 
         Promise.reject({
             status: 'failure',
-            message: 'Netwirk Not found.'
+            message: 'Network Not found.'
         });
 
     } else {
