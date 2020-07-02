@@ -62,7 +62,7 @@ const PasswordVerifyScreen = (payload) => {
                     required
                     onChange={(e) => onInputChange({ password: e.currentTarget.value })}
                 />
-                {isValidField ? null : <div className='inputField__message'>This email address is not registered with us, try with different one.</div>}
+                {isValidField ? 'You will receive an OTP on this email to continue to application.' : <div className='inputField__message'>Please enter correct OTP.</div>}
                 {isLoading ? <div className='loader' /> : null}
             </div>
             <button type='submit' className='btn btn__disabled1 btn__block btn__parimary'>Login</button>

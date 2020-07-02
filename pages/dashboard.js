@@ -3,8 +3,13 @@ import RecentTaskListView from '../views/RecentTaskListView';
 import TaskAreaView from '../views/TaskAreaView';
 import TaskCategoriesView from '../views/TaskCategoriesView';
 import ChartView from '../views/ChartView';
+import { http } from '../modules';
 
 export default function DashBoardPage() {
+
+    http.demo().then( ( e ) => console.log( e ) )
+    
+
     return (
         <>
             <SubHeaderView pageTitle='Dashboard' />

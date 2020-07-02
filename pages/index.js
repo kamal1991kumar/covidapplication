@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginPageView from '../views/LoginPageView';
-import { http } from '../modules';
+import { http, storage } from '../modules';
 
 export default class LoginPage extends React.Component {
 
@@ -8,7 +8,7 @@ export default class LoginPage extends React.Component {
         isLoading: false,
         userVerificationScreen: false,
         isValidField: true,
-        username: 'kamal.kumar@xebia.com',
+        username: '',
         password: ''
     }
 
@@ -39,7 +39,11 @@ export default class LoginPage extends React.Component {
         this.setState({ isLoading: true }, () => {
 
             const { password } = this.state;
-            http.userPasswordVerification({ password }).then(() => {
+            http.userPasswordVerification({ password }).then(( res ) => {
+
+                const { token, user } = res.payload;
+                storage.token.set( token );
+                storage.userInfo.set( user );
 
                 this.props.Router.push('/dashboard');
     
