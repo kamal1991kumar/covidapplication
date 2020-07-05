@@ -1,11 +1,12 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
 import Link from 'next/link';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 
-export default function TaskAreaView() {
-
-    return (
-        <div className='taskArea'>
-           
+export class TaskAreaView extends Component {
+    render() {
+        return (
+            <div className='taskArea'>
             <div className='card card--mb20'>
             <div className='grid-inner'>
             <h4 className='heading heading--h4'>Tasks Area</h4>
@@ -32,5 +33,10 @@ export default function TaskAreaView() {
                 </div>
             </div>
         </div>
-    );
+        )
+    }
 }
+
+export default TaskAreaView
+
+
