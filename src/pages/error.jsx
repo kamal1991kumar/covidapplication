@@ -1,6 +1,6 @@
-import Router from 'next/router';
+import React from 'react';
 
-export default function ErrorPage() {
+export default function NotFoundPage( props ) {
 
     return(
         <div className='errorPage'>
@@ -9,7 +9,7 @@ export default function ErrorPage() {
             </div>
             <div className='errorPage__title'>404</div>
             <div className='errorPage__message'>Oops! Something is wrong.</div>
-            <button className='btn btn__parimary' onClick={() => Router.back()}>Go to initial page</button>
+            <button className='btn btn__parimary' onClick={() => props.history.goBack()}>Go to initial page</button>
         </div>
     );
 

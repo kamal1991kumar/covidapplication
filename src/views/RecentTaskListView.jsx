@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import Tooltip from '../views/Tooltip';
 export default function RecentTaskListView() {
 
@@ -35,7 +35,7 @@ export default function RecentTaskListView() {
 const TableBodyRow = () => {
     return (
         <tr>
-            <Link href='/detail'><td className='cursorPointer'>Reception & Lift Lobby</td></Link>
+            <Link to='/detail'><td className='cursorPointer'>Reception & Lift Lobby</td></Link>
             <td>Lobby</td>
             <td>Punnet</td>
             <td>Pending</td>

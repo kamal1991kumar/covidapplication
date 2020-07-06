@@ -99,7 +99,7 @@ export default connect(
 
             dispatch( {
                 type: actionsType.NETWORK_ERROR,
-                data: e.payload.message
+                data: e.message
             } );
 
         } );

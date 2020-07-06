@@ -45,7 +45,7 @@ export default class LoginPage extends React.Component {
                 storage.token.set( token );
                 storage.userInfo.set( user );
 
-                this.props.Router.push('/dashboard');
+                this.props.history.push('/dashboard');
     
             }).catch(() => {
                 this.setState({ isLoading: false, isValidField: false });

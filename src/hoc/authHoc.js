@@ -1,23 +1,34 @@
 import React from 'react';
 import { utils } from '../modules';
-
+import Header from '../views/HeaderView';
 export default class AuthHoc extends React.Component{
 
     componentDidMount() {
+
+        const { history, location } = this.props;
+
         if( ! utils.isAuthorizedUser() ) {
-            this.props.Router.push( '/' );
+            history.push( '/' );
             
         } else {
-            if( this.props.Router.pathname !== '/' ) {
-                this.props.Router.push( this.props.Router.pathname );
+            if( location.pathname !== '/' ) {
+                history.push( location.pathname );
             } else {
-                this.props.Router.push( '/dashboard' );
+                history.push( '/dashboard' );
             }
         }
     }
 
     render() {
-        return this.props.children;
+
+        const { path } = this.props.match;
+
+        return(
+            <>
+                { path === '/' ? null : <Header { ...this.props }/>}
+                { this.props.children }
+            </> 
+        );
     }
 
 }

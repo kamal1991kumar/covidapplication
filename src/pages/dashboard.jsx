@@ -1,3 +1,4 @@
+import React from 'react';
 import SubHeaderView from '../views/SubHeaderView';
 import RecentTaskListView from '../views/RecentTaskListView';
 import TaskAreaView from '../views/TaskAreaView';

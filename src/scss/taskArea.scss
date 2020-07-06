@@ -1,21 +1,30 @@
 .taskArea {
     &__listing {
-        display: flex;
-        justify-content: space-between;
-        text-align: center;;
-
+        overflow-x: auto;
+        text-align: left;
+        white-space: nowrap;
+        min-height: 106px;
+        position: relative;
+        &--textcenter {
+            text-align: center;
+            line-height: 106px;
+        }
+        
         &__item {
+            width: 120px;
+            display: inline-block;
+            text-align: center;
             cursor: pointer;
+            margin-left: 15px;
+            &:first-child {
+                margin-left: 0;
+            }
         }
         img {
             border-radius: 3px;
         }
         &__label {
-            text-align: center;
             padding-top: 10px;
         }
-    }
-    .card__content {
-        padding-bottom: 10px;
     }
 }

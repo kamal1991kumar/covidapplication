@@ -22,9 +22,16 @@ Axios.interceptors.response.use( function( response ){
 
 }, function(error){
 
-    if (error.message === 'Network Error' && !error.response) {
+    if (error.message === 'Network Error' && !error.response ) {
 
-        Promise.reject({
+        return Promise.reject({
+            status: 'failure',
+            message: 'Network Not found.'
+        });
+
+    } else if ( error.response.status === 403 ) {
+
+        return Promise.reject({
             status: 'failure',
             message: 'Network Not found.'
         });
@@ -43,7 +50,7 @@ export const http = {
         return Axios.post('/password', data);
     },
     getArea() {
-        return Axios.get('/category');
+        return Axios.get('/area');
     },
     getLocations() {
         return Axios.get('/location');
