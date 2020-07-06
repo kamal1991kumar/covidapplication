@@ -33,5 +33,10 @@ export default function TaskAreaView() {
                 </div>
             </div>
         </div>
-    );
+        )
+    }
 }
+
+export default TaskAreaView
+
+
