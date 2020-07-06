@@ -1,0 +1,21 @@
+
+.errorPage {
+    width: 100%;
+    height: 100vh;
+    background: $color-secondary;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+    &__title {
+        @extend .f100;
+        font-size: 200px;
+        line-height: 250px;
+    }
+    &__message {
+        padding-bottom: 20px;
+    }
+}

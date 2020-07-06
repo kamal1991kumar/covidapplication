@@ -1,0 +1,11 @@
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px -1px rgba(0,0,0,.3);
+    &__content {
+        padding: 20px;
+    }
+    &--mb20 {
+        margin-bottom: 20px;
+    }
+}

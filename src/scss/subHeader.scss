@@ -1,0 +1,21 @@
+.subHeader {
+    background: #fff;
+    margin-bottom: 20px;
+    &__inner {
+        display: flex;
+        padding: 10px 0;
+        align-items: center;
+    }
+    &__left {
+        flex: 1;
+        .heading {
+            padding-bottom: 0;
+        }
+    }
+    &__right {
+        display: flex;
+        .btn {
+            margin-left: 10px;
+        }
+    }
+}

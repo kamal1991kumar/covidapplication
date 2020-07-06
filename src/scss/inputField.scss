@@ -1,0 +1,54 @@
+.inputField {
+    position: relative;
+   
+    
+    .loader {
+        position: absolute;
+        right: 11px;
+        top: 11px;
+    }
+    &__input, &__select, &__textarea {
+        border: solid 1px #DEDEDE;
+        width: 100%;
+        border-radius: 4px;
+        color: #5a5a5a;
+        @extend .f100;
+        background: #fff;
+        
+    }
+    &__input {
+        padding: 8px;
+        &::placeholder {
+            color: #999;
+            font-size: 12px;
+        }
+    }
+    
+
+    &__select {
+        padding: 7px 7px 7px 3px;
+    }
+
+    &__textarea {
+        resize: none;
+        height: 50px;
+        padding: 8px;
+    }
+
+    &__message {
+        font-size: 9px;
+        line-height: 14px;
+        padding: 4px 0;
+    }
+
+    $el: &;
+    &--error {
+        #{$el}__input {
+            border-color: #db4a4a;
+            color: #db4a4a;
+        }
+        #{$el}__message {
+            color: #db4a4a;
+        }
+    }
+}
