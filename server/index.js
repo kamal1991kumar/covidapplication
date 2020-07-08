@@ -10,6 +10,4 @@ app.get( '*', ( req, res ) => {
     res.send( index );
 } );
 
-app.listen( process.env.PORT || 5000, () => {
-    console.log( 'Application is running on port:'+port );
-} );
+app.listen( process.env.PORT || 5000 );
