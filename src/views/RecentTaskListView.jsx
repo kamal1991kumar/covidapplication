@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Tooltip from '../views/Tooltip';
+import SelectView from '../views/SelectView';
+import { http } from '../modules';
+
 export default function RecentTaskListView() {
+
+    const [ state, setState ] = useState( {
+        isLoading: true,
+        rows: [],
+        errorMessage: ''
+    } );
+
+
+    useEffect( () => {
+
+        http.task.getAll().then( ( response ) => {
+
+            setState( { ...state, rows: response, isLoading: false } );
+
+        } ).catch( ( e ) => {
+
+            setState( { ...state, isLoading: false, errorMessage: e.message } );
+
+        } );
+
+
+    }, [] );
+
 
     return (
         <div className='card card--mb20'>
             <div className='grid-inner'>
-                <h4 className='heading--h4'>Recent Task</h4>
-                <a href='#'>
-                    {/* <img src='/images/download.svg' width='15' /> */}
-                    <select className='inputField__select '>  <option>Download Report</option></select>
-                </a>
+                <h4 className='heading--h4'>Upcoming Task</h4>
+                <SelectView
+                    { ...{
+                        type: 'download'
+                    } }
+                />
             </div>
             <table className='table'>
                 <thead>
@@ -35,7 +62,7 @@ export default function RecentTaskListView() {
 const TableBodyRow = () => {
     return (
         <tr>
-            <Link to='/detail'><td className='cursorPointer'>Reception & Lift Lobby</td></Link>
+            <td className='cursorPointer'><Link to='/detail'>Reception & Lift Lobby</Link></td>
             <td>Lobby</td>
             <td>Punnet</td>
             <td>Pending</td>
@@ -59,7 +86,6 @@ const TableBodyRow = () => {
                 <Tooltip title='Delete'>
                     <div className='table__icon'>
                         <img src='/images/trash.svg' alt='approved' />
-                        {/* <i className="fa fa-trash-o trash" ></i> */}
                     </div>
                 </Tooltip>
             </td>

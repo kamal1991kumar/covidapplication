@@ -2,12 +2,13 @@ import React from 'react';
 
 export default function SelectView( payload ) {
 
-    const { options, type, value, onSelect } = payload;
+    const { options, type, value, onSelect, required } = payload;
     const _options = dataManipulation( options, type );
 
     return (
         <div className='inputField'>
-            <select className='inputField__select' onChange={ onSelect } defaultValue={ value }>
+            <select className='inputField__select' onChange={ onSelect } defaultValue={ value } required={ required } >
+                <option value=''>Select</option>
                 {
                     _options.map( ( i ) => {
                         return(
@@ -26,6 +27,10 @@ export default function SelectView( payload ) {
 
 }
 
+SelectView.defaultProps = {
+    required: false
+};
+
 const dataManipulation = ( options, type ) => {
 
     switch( type ) {
@@ -33,6 +38,39 @@ const dataManipulation = ( options, type ) => {
         case 'location': {
 
             return options && options.map( ( i ) => ({ value: i.id, displayLabel: i.location }) );
+
+        }
+
+        case 'allUser': {
+
+            return options && options.map( ( i ) => ({ value: i.id, displayLabel: i.username }) );
+
+        }
+
+        case 'frequency': {
+
+            return options && options.map( ( i ) => ({ value: i.id, displayLabel: i.frequency }) );
+
+        }
+
+        case 'category': {
+
+            return options && options.map( ( i ) => ({ value: i.id, displayLabel: i.category }) );
+
+        }
+
+        case 'area': {
+
+            return options && options.map( ( i ) => ({ value: i.areaId, displayLabel: i.areaName }) );
+
+        }
+
+        case 'download': {
+
+            return [ {
+                value: '0',
+                displayLabel: 'Download Report'
+            } ]
 
         }
 

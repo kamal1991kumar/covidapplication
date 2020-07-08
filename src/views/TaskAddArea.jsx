@@ -1,12 +1,10 @@
 import React from 'react';
 
-
-
 export default function TaskAddArea() {
 
     return (
         <div className='taskForm'>
-            
+
             <div className='grid'>
                 <div className='grid--6'>
                     <h6 className='heading heading--h6'>Area Name</h6>

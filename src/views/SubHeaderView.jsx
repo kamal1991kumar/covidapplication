@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { http } from '../modules';
 import ModalView from '../views/ModalView';
-import TaskFormComponent from '../components/TaskFormComponent';
+import TaskFormView from '../views/TaskFormView';
 import AddAreaComponent from '../components/AddAreaComponent';
 import AddItemComponent from '../components/AddItemComponent';
 import { actionsType } from '../store/ruducers/locationReducer';
@@ -42,7 +42,7 @@ function SubHeaderView( props ) {
                             <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
-                            >Add Task</button>
+                            >Create Task</button>
                              <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showAddarea: !state.showAddarea } ) }
@@ -60,7 +60,7 @@ function SubHeaderView( props ) {
                     closeHandler={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
                     title='Add Task'
                 >
-                    <TaskFormComponent />
+                    <TaskFormView />
                 </ModalView>
             }
              { !state.showAddarea ? null :
@@ -88,7 +88,7 @@ export default connect(
         return locationReducer;
     }, ( dispatch ) => {
 
-        http.getLocations().then( ( data ) => {
+        http.getCommonApi().then( ( data ) => {
 
             dispatch( {
                 type: actionsType.LOAD_DATA,

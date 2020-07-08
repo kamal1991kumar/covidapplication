@@ -9,6 +9,8 @@ export const actionsType = {
 const defaultState = {
     isLoading: true,
     locations: [],
+    allUsers: [],
+    frequencies: [],
     selectedValue: '',
     errorMessage: ''
 };
@@ -24,7 +26,9 @@ export function locationReducer( state = defaultState, action ) {
             return {
                 ...state,
                 isLoading: false,
-                locations: data
+                locations: data[0].payload.objectList,
+                allUsers: data[1].payload.objectList,
+                frequencies: data[2].payload.objectList,
             };
 
         }
@@ -50,7 +54,12 @@ export function locationReducer( state = defaultState, action ) {
 
         default : {
             
-            return state;
+            const { location } = storage.userInfo.get();
+
+            return {
+                ...state,
+                selectedValue: location
+            };
         }
 
     }

@@ -12,11 +12,11 @@ export default class OpenCloseHoc extends React.Component{
         this.props.parentRef( this );
     }
 
-    componentWillReceiveProps( nextProps ) {
-        if( this.props.isOpen !== nextProps.isOpen ) {
-            this.setState( { isOpen: nextProps.isOpen } );
-        }
-    }
+    // static getDerivedStateFromProps( props ) {
+    //     if( props.isOpen !== nextProps.isOpen ) {
+    //         this.setState( { isOpen: nextProps.isOpen } );
+    //     }
+    // }
 
     componentDidMount() {
         if( ! isEmpty( this.ref.current ) ) {

@@ -52,10 +52,24 @@ export const http = {
     getArea() {
         return Axios.get('/area');
     },
-    getLocations() {
-        return Axios.get('/location');
+    category: {
+        getAll() {
+            return Axios.get('/category');
+        }
     },
-    getUpcommingTask() {
-        return Axios.get('/allTasks');
+    getCommonApi() {
+        const location = Axios.get('/location');
+        const allusers = Axios.get('/allusers');
+        const frequency = Axios.get('/frequency');
+
+        return Axios.all( [ location, allusers, frequency ] );
+    },
+    task: {
+        getAll() {
+            return Axios.get('/allTasks');
+        },
+        add( data ) {
+            return Axios.post('/addTask', data);
+        }
     }
 }

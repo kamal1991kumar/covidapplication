@@ -1,38 +1,73 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { http } from '../modules';
+import { actionsType } from '../store/ruducers/categoryReducer';
+import _ from 'lodash';
 
-export default function TaskAreaView() {
+function TaskCategoryView( payload ) {
+
+    const { categories, isLoading, errorMessage } = payload;
+
+    let view = null;
+    let hasDataShow = false;
+
+    if( isLoading ) {
+        view = 'Loading...';
+    } else if ( ! _.isEmpty( errorMessage ) ) {
+        view = errorMessage;
+    } else {
+        hasDataShow = true;
+        view = categories.map( (i) => {
+            return (
+                <li className='taskArea__listing__item' key={ i.id }>
+                    <Link to='/listing'>
+                        <img
+                            src='/images/Sanitiser.png'
+                            alt='img'
+                        />
+                        <div className='taskArea__listing__label'>{ i.category }</div>
+                    </Link>
+                </li>
+            );
+        });
+    }
 
     return (
         <div className='taskArea'>
             <div className='card card--mb20'>
                 <div className='card__content'>
-                    <h4 className='heading heading--h4'>Task Area Items</h4>
-                    <ul className='taskArea__listing'>
-                        {
-                            ['Sanitiser', 'Cleaning', 'Washing Hands', 'Tissue box', 'Sanitiser', 'Cleaning', 'Washing Hands'].map((item) => {
-                                return (
-
-                                    <li className='taskArea__listing__item'>
-                                        <Link to='/listing'>
-                                            <img
-                                                src={`/images/${item}.png`}
-
-
-                                                alt='img'
-                                            />
-                                            <div className='taskArea__listing__label'>{item}</div>
-                                        </Link>
-
-                                    </li>
-                                );
-                            })
-                        }
+                <h4 className='heading heading--h4'>Tasks Category</h4>
+                    <ul className={ `taskArea__listing ${ hasDataShow ? '' : 'taskArea__listing--textcenter' }` }>
+                        { view  }
                     </ul>
                 </div>
             </div>
         </div>
     );
 }
+
+export default connect(
+    ({ categoryReducer }) => {
+        return categoryReducer;
+    }, ( dispatch ) => {
+
+        http.category.getAll().then((response) => {
+
+            dispatch( {
+                type: actionsType.LOAD_DATA,
+                data: response.payload.objectList
+            } );
+
+        }).catch( ( e ) => {
+            dispatch( {
+                type: actionsType.NETWORK_ERROR,
+                data: e.message
+            } );
+        } );
+
+        return {};
+
+    })(TaskCategoryView);
 
 
