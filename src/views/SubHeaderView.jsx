@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { http } from '../modules';
 import ModalView from '../views/ModalView';
 import TaskFormView from '../views/TaskFormView';
-import AddAreaComponent from '../components/AddAreaComponent';
-import AddItemComponent from '../components/AddItemComponent';
+import TaskAddArea from '../views/TaskAddArea';
+import TaskAddCategory from '../views/TaskAddCategory';
 import { actionsType } from '../store/ruducers/locationReducer';
 import SelectView from '../views/SelectView';
 
@@ -42,7 +42,7 @@ function SubHeaderView( props ) {
                             <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
-                            >Create Task</button>
+                            >Add Task</button>
                              <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showAddarea: !state.showAddarea } ) }
@@ -50,7 +50,7 @@ function SubHeaderView( props ) {
                              <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showAddItem: !state.showAddItem } ) }
-                            >Add Item</button>
+                            >Add Category</button>
                         </div>
                     </div>
                 </div>
@@ -68,15 +68,15 @@ function SubHeaderView( props ) {
                     closeHandler={ () => updateState( { showAddarea: !state.showAddarea } ) }
                     title='Add Area'
                 >
-                    <AddAreaComponent />
+                    <TaskAddArea />
                 </ModalView>
             }
              { !state.showAddItem ? null :
                 <ModalView
                     closeHandler={ () => updateState( { showAddItem: !state.showAddItem } ) }
-                    title='Add Item'
+                    title='Add Category'
                 >
-                    <AddItemComponent />
+                    <TaskAddCategory />
                 </ModalView>
             }
         </React.Fragment>

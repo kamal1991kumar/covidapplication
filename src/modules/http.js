@@ -60,6 +60,9 @@ export const http = {
     category: {
         getAll() {
             return Axios.get('/category');
+        },
+        add( data ) {
+            return Axios.post('/addCategory', data );
         }
     },
     getCommonApi() {

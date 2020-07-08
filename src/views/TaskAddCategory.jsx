@@ -6,14 +6,14 @@ import ButtonWithLoader from './ButtonWithLoader';
 import { http } from '../modules';
 import _ from 'lodash';
 
-function TaskAddArea( payload ) {
+function TaskAddCategory( payload ) {
 
     const [ state, setState ] = useState( {
         isLoading: false,
         errorMessage: '',
         formData: {
             locationId: '',
-            area: '',
+            categoryName: '',
             imagePath: ''
         }
     } );
@@ -25,7 +25,7 @@ function TaskAddArea( payload ) {
         e.preventDefault();
         setState( { ...state, isLoading: true } );
 
-        http.area.add( formData ).then( ( response ) => {
+        http.category.add( formData ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
 
@@ -49,11 +49,11 @@ function TaskAddArea( payload ) {
         <form onSubmit={ onFormSubmit } className='taskForm'>
             <div className='grid'>
                 <div className='grid--6'>
-                    <h6 className='heading heading--h6'>Area Name</h6>
+                    <h6 className='heading heading--h6'>Category Name</h6>
                     <div className='inputField'>
                         <input type='text' className='inputField__input' 
-                            value={ formData.area }
-                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, area: e.currentTarget.value } } ) }
+                            value={ formData.categoryName }
+                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, categoryName: e.currentTarget.value } } ) }
                             required
                         />
                     </div>
@@ -110,4 +110,4 @@ export default connect( ( { locationReducer, } ) => {
     return {
         locations,
     };
-}, null )( TaskAddArea );
+}, null )( TaskAddCategory );
