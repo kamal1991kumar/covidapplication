@@ -53,7 +53,6 @@ function TaskFormView( payload ) {
 
         } );
 
-
     }
 
     if( !_.isEmpty( state.errorMessage ) ) {

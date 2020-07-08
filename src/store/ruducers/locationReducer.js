@@ -54,11 +54,11 @@ export function locationReducer( state = defaultState, action ) {
 
         default : {
             
-            const { location } = storage.userInfo.get();
+            const _location = storage.userInfo.get() && storage.userInfo.get().location;
 
             return {
                 ...state,
-                selectedValue: location
+                selectedValue: _location
             };
         }
 

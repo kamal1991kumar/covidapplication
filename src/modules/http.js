@@ -49,8 +49,13 @@ export const http = {
     userPasswordVerification(data) {
         return Axios.post('/password', data);
     },
-    getArea() {
-        return Axios.get('/area');
+    area: {
+        getAll() {
+            return Axios.get('/area');
+        },
+        add( data ) {
+            return Axios.post('/addArea', data );
+        }
     },
     category: {
         getAll() {

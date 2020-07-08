@@ -52,7 +52,7 @@ export default connect(
         return areaReducer;
     }, ( dispatch ) => {
 
-        http.getArea().then((response) => {
+        http.area.getAll().then((response) => {
 
             dispatch( {
                 type: actionsType.LOAD_DATA,
