@@ -6,6 +6,11 @@
     cursor: pointer;
     border-radius: 3px;
     font-size: 12px;
+    display: inline-flex;
+
+    .loader {
+        margin-right: 10px;
+    }
 
     &__block {
         display: block;
@@ -24,7 +29,7 @@
         color: #fff;
     }
 
-    &__disabled {
+    &:disabled {
         cursor: not-allowed;
         background:$color-disabled;
     }

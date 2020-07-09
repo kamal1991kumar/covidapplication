@@ -49,13 +49,35 @@ export const http = {
     userPasswordVerification(data) {
         return Axios.post('/password', data);
     },
-    getArea() {
-        return Axios.get('/area');
+    area: {
+        getAll() {
+            return Axios.get('/area');
+        },
+        add( data ) {
+            return Axios.post('/addArea', data );
+        }
     },
-    getLocations() {
-        return Axios.get('/location');
+    category: {
+        getAll() {
+            return Axios.get('/category');
+        },
+        add( data ) {
+            return Axios.post('/addCategory', data );
+        }
     },
-    getUpcommingTask() {
-        return Axios.get('/allTasks');
+    getCommonApi() {
+        const location = Axios.get('/location');
+        const allusers = Axios.get('/allusers');
+        const frequency = Axios.get('/frequency');
+
+        return Axios.all( [ location, allusers, frequency ] );
+    },
+    task: {
+        getAll() {
+            return Axios.get('/allTasks');
+        },
+        add( data ) {
+            return Axios.post('/addTask', data);
+        }
     }
 }

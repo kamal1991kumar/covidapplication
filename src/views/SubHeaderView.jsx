@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { http } from '../modules';
 import ModalView from '../views/ModalView';
-import TaskFormComponent from '../components/TaskFormComponent';
-import AddAreaComponent from '../components/AddAreaComponent';
-import AddItemComponent from '../components/AddItemComponent';
+import TaskFormView from '../views/TaskFormView';
+import TaskAddArea from '../views/TaskAddArea';
+import TaskAddCategory from '../views/TaskAddCategory';
 import { actionsType } from '../store/ruducers/locationReducer';
 import SelectView from '../views/SelectView';
 
@@ -50,7 +50,7 @@ function SubHeaderView( props ) {
                              <button
                                 className='btn btn__parimary'
                                 onClick={ () => updateState( { showAddItem: !state.showAddItem } ) }
-                            >Add Item</button>
+                            >Add Category</button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ function SubHeaderView( props ) {
                     closeHandler={ () => updateState( { showTaskFrom: !state.showTaskFrom } ) }
                     title='Add Task'
                 >
-                    <TaskFormComponent />
+                    <TaskFormView />
                 </ModalView>
             }
              { !state.showAddarea ? null :
@@ -68,15 +68,15 @@ function SubHeaderView( props ) {
                     closeHandler={ () => updateState( { showAddarea: !state.showAddarea } ) }
                     title='Add Area'
                 >
-                    <AddAreaComponent />
+                    <TaskAddArea />
                 </ModalView>
             }
              { !state.showAddItem ? null :
                 <ModalView
                     closeHandler={ () => updateState( { showAddItem: !state.showAddItem } ) }
-                    title='Add Item'
+                    title='Add Category'
                 >
-                    <AddItemComponent />
+                    <TaskAddCategory />
                 </ModalView>
             }
         </React.Fragment>
@@ -88,7 +88,7 @@ export default connect(
         return locationReducer;
     }, ( dispatch ) => {
 
-        http.getLocations().then( ( data ) => {
+        http.getCommonApi().then( ( data ) => {
 
             dispatch( {
                 type: actionsType.LOAD_DATA,
