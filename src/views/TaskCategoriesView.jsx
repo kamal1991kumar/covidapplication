@@ -20,13 +20,13 @@ function TaskCategoryView( payload ) {
         hasDataShow = true;
         view = categories.map( (i) => {
             return (
-                <li className='taskArea__listing__item' key={ i.id }>
+                <li className='taskArea__listing__item' key={ i.categoryId }>
                     <Link to='/listing'>
                         <img
                             src='/images/Sanitiser.png'
                             alt='img'
                         />
-                        <div className='taskArea__listing__label'>{ i.category }</div>
+                        <div className='taskArea__listing__label'>{ i.categoryName }</div>
                     </Link>
                 </li>
             );

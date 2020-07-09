@@ -78,6 +78,9 @@ export const http = {
         },
         add( data ) {
             return Axios.post('/addTask', data);
+        },
+        delete( id ) {
+            return Axios.delete(`/delete/task/${id}`);
         }
     }
 }

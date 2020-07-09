@@ -55,7 +55,7 @@ const dataManipulation = ( options, type ) => {
 
         case 'category': {
 
-            return options && options.map( ( i ) => ({ value: i.id, displayLabel: i.category }) );
+            return options && options.map( ( i ) => ({ value: i.categoryId, displayLabel: i.categoryName }) );
 
         }
 

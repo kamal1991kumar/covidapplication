@@ -1,4 +1,5 @@
 import { storage } from "./storage";
+import dateformat from 'dateformat';
 
 export const utils = {
     linkActive( location, pathname ) {
@@ -12,5 +13,9 @@ export const utils = {
         storage.token.clear();
         storage.userInfo.clear();
         history.push( '/' );
+    },
+    dateFormate( d ) {
+        const now = new Date( d );
+        return dateformat(now, "mmmm dS, yyyy hh:MM TT");
     }
 }

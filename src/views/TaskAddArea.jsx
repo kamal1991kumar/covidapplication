@@ -28,6 +28,7 @@ function TaskAddArea( payload ) {
         http.area.add( formData ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
+            window.location.reload();
 
         } ).catch( ( e ) => {
 
