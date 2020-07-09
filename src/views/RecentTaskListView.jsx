@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Tooltip from '../views/Tooltip';
 import SelectView from '../views/SelectView';
-import { http } from '../modules';
+import { http, utils } from '../modules';
+import _ from 'lodash';
 
-export default function RecentTaskListView() {
+function RecentTaskListView( props ) {
 
     const [ state, setState ] = useState( {
         isLoading: true,
@@ -12,22 +14,21 @@ export default function RecentTaskListView() {
         errorMessage: ''
     } );
 
-
-    useEffect( () => {
-
+    const loadData = () => {
         http.task.getAll().then( ( response ) => {
 
-            setState( { ...state, rows: response, isLoading: false } );
+            setState( { ...state, rows: response.payload.objectList, isLoading: false } );
 
         } ).catch( ( e ) => {
 
             setState( { ...state, isLoading: false, errorMessage: e.message } );
 
         } );
+    };
+    
+    useEffect( () => loadData(), [] );
 
-
-    }, [] );
-
+    const { rows } = state;
 
     return (
         <div className='card card--mb20'>
@@ -44,14 +45,25 @@ export default function RecentTaskListView() {
                     <tr>
                         <th>Subject</th>
                         <th>Area</th>
-                        <th>Submitted by</th>
+                        <th>Assign To</th>
                         <th>Stauts</th>
-                        <th>Submitted on</th>
+                        <th>Created on</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {[1, 2, 3, 4, 5].map(() => <TableBodyRow />)}
+                    {   
+                       rows.length === 0 ? null : rows.map(( row ) => {
+                            return(
+                                <TableBodyRow
+                                    key={ row.id }
+                                    rowData={ row }
+                                    { ...props }
+                                    reload={ loadData }
+                                />
+                            );
+                        })
+                    }
                 </tbody>
             </table>
         </div>
@@ -59,14 +71,32 @@ export default function RecentTaskListView() {
 
 }
 
-const TableBodyRow = () => {
+export default connect( ( { locationReducer, categoryReducer, areaReducer } ) => {
+
+    const { allUsers, frequencies, locations } = locationReducer;
+    const { categories } = categoryReducer;
+    const { areas } = areaReducer;
+
+    return {
+        allUsers,
+        frequencies,
+        locations,
+        categories,
+        areas
+    };
+}, null )( RecentTaskListView );
+
+const TableBodyRow = ( payload ) => {
+
+    const { rowData, areas, allUsers, reload } = payload;
+    
     return (
         <tr>
-            <td className='cursorPointer'><Link to='/detail'>Reception & Lift Lobby</Link></td>
-            <td>Lobby</td>
-            <td>Punnet</td>
-            <td>Pending</td>
-            <td>20 Mar, 2019 10:00 AM</td>
+            <td className='cursorPointer'><Link to='/detail'>{ rowData.taskDescription }</Link></td>
+            <td>{ getValueByOptions( 'area', rowData.areaId, areas ) }</td>
+            <td>{ getValueByOptions( 'assignTo', rowData.assignToId, allUsers ) }</td>
+            <td>{ rowData.status }</td>
+            <td>{ utils.dateFormate( rowData.taskCreationDate ) }</td>
             <td>
                 <Tooltip title='Approved'>
                     <div className='table__icon'>
@@ -84,11 +114,44 @@ const TableBodyRow = () => {
                     </div>
                 </Tooltip>
                 <Tooltip title='Delete'>
-                    <div className='table__icon'>
+                    <div className='table__icon' onClick={ () => deleteTask( rowData.id, reload ) }>
                         <img src='/images/trash.svg' alt='approved' />
                     </div>
                 </Tooltip>
             </td>
         </tr>
     );
+}
+
+const deleteTask = ( rowId, reload ) => {
+    http.task.delete( rowId ).then( ( response ) => {
+        alert( response.message );
+        reload();
+    } );
+
+};
+
+const getValueByOptions = ( type, value, options ) => {
+
+    switch( type ) {
+        case 'area' : {
+
+            const _option = options.find( ( i ) => {
+                return i.areaId === value;
+            } );
+
+            return _.get( _option, 'areaName', '-' );
+
+        }
+        case 'assignTo' : {
+
+            const _option = options && options.find( ( i ) => {
+                return i.id === value;
+            } );
+
+            return _.get( _option, 'username', '-' );
+
+        }
+    }
+
 }

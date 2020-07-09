@@ -46,6 +46,7 @@ function TaskFormView( payload ) {
         http.task.add( _formData ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
+            window.location.reload();
 
         } ).catch( ( e ) => {
 
