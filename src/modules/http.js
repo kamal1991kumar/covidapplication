@@ -98,10 +98,13 @@ export const http = {
             return Axios.put(`/edit/task/${id}`,data);
         },
         getpie(){
-            return Axios.get('/getPieChartsValues')
+            return Axios.get('/getPieChartsValues');
         },
         getbar(){
-            return Axios.get('/getBarGraphValues')
+            return Axios.get('/getBarGraphValues');
+        },
+        downloadreport(){
+            return Axios.get('/report');
         }
     }
 }
