@@ -22,16 +22,32 @@ function TaskCategoryView( payload ) {
             return (
                 <li className='taskArea__listing__item' key={ i.categoryId }>
                     <Link to='/listing'>
+
                         <img
-                            src='/images/Sanitiser.png'
+
+                            src={`data:image/png;base64,${i.image}`}
                             alt='img'
                         />
-                        <div className='taskArea__listing__label'>{ i.categoryName }</div>
+                        
+                        	
+
+                        <div className='taskArea__listing__label'>{ i.categoryName } </div>
+                        {/* {console.log(i.image)} */}
                     </Link>
+                    <br/>   
+                    <img onClick={() => deleteCategories(i.categoryId)} src='/images/trash.svg' alt='approved' width="11px"/>
                 </li>
             );
         });
     }
+
+    const deleteCategories = ( categoryId ) => {
+        http.category.delete(  categoryId ).then( ( response ) => {
+            alert( response.message );
+            window.location.reload()  
+        });
+    
+    };
 
     return (
         <div className='taskArea'>

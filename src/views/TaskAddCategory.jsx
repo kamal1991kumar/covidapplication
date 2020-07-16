@@ -12,9 +12,9 @@ function TaskAddCategory( payload ) {
         isLoading: false,
         errorMessage: '',
         formData: {
-            locationId: '',
-            categoryName: '',
-            imagePath: ''
+            location_id: '',
+            category: '',
+            file: ''
         }
     } );
 
@@ -25,7 +25,13 @@ function TaskAddCategory( payload ) {
         e.preventDefault();
         setState( { ...state, isLoading: true } );
 
-        http.category.add( formData ).then( ( response ) => {
+        var form_data = new FormData();
+
+        form_data.append('file',formData['file'])
+        form_data.append('category',JSON.stringify({'category':formData['category'],'location_id':formData['location_id']}))
+
+
+        http.category.add( form_data ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
             window.location.reload();
@@ -53,8 +59,8 @@ function TaskAddCategory( payload ) {
                     <h6 className='heading heading--h6'>Category Name</h6>
                     <div className='inputField'>
                         <input type='text' className='inputField__input' 
-                            value={ formData.categoryName }
-                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, categoryName: e.currentTarget.value } } ) }
+                            value={ formData.category }
+                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, category: e.currentTarget.value } } ) }
                             required
                         />
                     </div>
@@ -64,11 +70,11 @@ function TaskAddCategory( payload ) {
                     <SelectView
                         { ...{
                             required: true,
-                            value: formData.locationId,
+                            value: formData.location_id,
                             type: 'location',
                             options: locations,
                             onSelect:(e) => {
-                                setState( { ...state, formData: { ...state.formData, locationId: e.currentTarget.value } } );
+                                setState( { ...state, formData: { ...state.formData, location_id: e.currentTarget.value } } );
                             }
                         } }
                     />
@@ -80,8 +86,8 @@ function TaskAddCategory( payload ) {
                     <div className='inputField'>
                         <label className="custom-file-upload">
                             <input type='file' className='inputField__file'
-                                value={ formData.imagePath }
-                                onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, imagePath: e.currentTarget.value } } ) }
+                                // value={ formData.file }
+                                onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, file: e.currentTarget.files[0] } } ) }
                             />
                             Upload
                         </label>

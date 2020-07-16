@@ -38,6 +38,7 @@ export const chart = {
 
         let _options = {
             ...options,
+            
             chart: {
                 ...options.chart,
                 type: "pie"
@@ -54,8 +55,9 @@ export const chart = {
             },
             series: [{ data: [['Pending', 10], ['Completed', 10], ['Upcoming', 10]] }]
         };
-
+       
         return _options;
+       
     },
     bar() {
 

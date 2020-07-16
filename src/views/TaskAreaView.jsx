@@ -7,6 +7,8 @@ import _ from 'lodash';
 
 function TaskAreaView( payload ) {
 
+
+   
     const { areas, isLoading, errorMessage } = payload;
 
     let view = null;
@@ -21,13 +23,18 @@ function TaskAreaView( payload ) {
         view = areas.map( (i) => {
             return (
                 <li className='taskArea__listing__item' key={ i.areaId }>
+                    
                     <Link to='/listing'>
                         <img
-                            src='/images/Lobby.jpg'
+                             src={`data:image/png;base64,${i.image}`}
                             alt='img'
                         />
-                        <div className='taskArea__listing__label'>{ i.areaName }</div>
+                        <div className='taskArea__listing__label'>{ i.areaName } &nbsp;&nbsp;</div>
                     </Link>
+                    <br/>
+                    <div ><img onClick={() => deleteArea(i.areaId)} src='/images/trash.svg' alt='approved' width="11px"/></div>
+                    {/* {console.log(areas)} */}
+                    
                 </li>
             );
         });
@@ -46,6 +53,19 @@ function TaskAreaView( payload ) {
         </div>
     );
 }
+
+
+const deleteArea = ( areaId ) => {
+    http.area.delete( areaId ).then( ( response ) => {
+        alert( response.message );
+        window.location.reload()
+    } );
+
+};
+
+
+
+
 
 export default connect(
     ({ areaReducer }) => {

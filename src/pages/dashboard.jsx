@@ -1,14 +1,22 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import SubHeaderView from '../views/SubHeaderView';
 import RecentTaskListView from '../views/RecentTaskListView';
 import TaskAreaView from '../views/TaskAreaView';
 import TaskCategoriesView from '../views/TaskCategoriesView';
 import ChartView from '../views/ChartView';
 import { http } from '../modules';
+import axios from 'axios'
 
 export default function DashBoardPage() {
 
-    //http.demo().then( ( e ) => console.log( e ) )
+      //backend requirenment nothing related to subheaderview
+      useEffect(() => {
+        axios.get('https://covid-compliance-application.herokuapp.com/renewStatus')
+            .then(res => {
+               console.log("its working")
+            })
+        })
+
 
 
     return (
@@ -27,7 +35,7 @@ export default function DashBoardPage() {
                             </div>
                             <div className='grid'>
                             </div>
-                            <ChartView />
+                            <ChartView chartType='pie'/>
                         </div>
                     </div>
                     <div className='grid--6'>

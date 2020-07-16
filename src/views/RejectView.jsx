@@ -6,19 +6,17 @@ import ButtonWithLoader from './ButtonWithLoader';
 import { http } from '../modules';
 import _ from 'lodash';
 
-function TaskAddArea( payload ) {
+function RejectView( payload ) {
 
     const [ state, setState ] = useState( {
         isLoading: false,
         errorMessage: '',
         formData: {
-            location_id: '',
-            area: '',
-            file: ''
+            comments: '',
         }
     } );
 
-    const { locations } = payload;
+    const { locations,rowData } = payload;
     const { formData, errorMessage } = state;
 
     
@@ -29,12 +27,12 @@ function TaskAddArea( payload ) {
         
         var form_data = new FormData();
 
-        form_data.append('file',formData['file'])
-        form_data.append('area',JSON.stringify({'area':formData['area'],'location_id':formData['location_id']}))
+    
+        form_data.append('task',JSON.stringify({"task_id":rowData.toString(),"comment":formData['comments']}))
 
         // console.log(form_data)
 
-        http.area.add( form_data ).then( ( response ) => {
+        http.task.reject( form_data ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
             window.location.reload();
@@ -59,44 +57,16 @@ function TaskAddArea( payload ) {
         <form onSubmit={ onFormSubmit } className='taskForm'>
             <div className='grid'>
                 <div className='grid--6'>
-                    <h6 className='heading heading--h6'>Area Name</h6>
+                    <h6 className='heading heading--h6'>Comments</h6>
                     <div className='inputField'>
                         <input type='text' className='inputField__input' 
                             value={ formData.area }
-                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, area: e.currentTarget.value } } ) }
+                            onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, comments: e.currentTarget.value } } ) }
                             required
                         />
                     </div>
                 </div>
-                <div className='grid--6'>
-                    <h6 className='heading heading--h6'>Location</h6>
-                    <SelectView
-                        { ...{
-                            required: true,
-                            value: formData.location_id,
-                            type: 'location',
-                            options: locations,
-                            onSelect:(e) => {
-                                setState( { ...state, formData: { ...state.formData, location_id: e.currentTarget.value } } );
-                            }
-                        } }
-                    />
-                </div>
-            </div>
-            <div className='grid'>
-                <div className='grid--6'>
-                    <h6 className='heading heading--h6'>Image</h6>
-                    <div className='inputField'>
-                        <label className="custom-file-upload">
-                            <input type='file' className='inputField__file'
-                                // value={ formData.file }
-                                onChange={ ( e ) => setState( { ...state, formData: { ...state.formData, file: e.currentTarget.files[0] } } ) }
-                            />
-                            {console.log(state.formData)}
-                            Upload
-                        </label>
-                    </div>
-                </div>
+
             </div>
             <div className='grid'>
                 <div className='grid--6'>&nbsp;</div>
@@ -121,4 +91,4 @@ export default connect( ( { locationReducer, } ) => {
     return {
         locations,
     };
-}, null )( TaskAddArea );
+}, null )( RejectView );

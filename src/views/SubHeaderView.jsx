@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { connect } from 'react-redux';
 import { http } from '../modules';
 import ModalView from '../views/ModalView';
@@ -7,6 +7,8 @@ import TaskAddArea from '../views/TaskAddArea';
 import TaskAddCategory from '../views/TaskAddCategory';
 import { actionsType } from '../store/ruducers/locationReducer';
 import SelectView from '../views/SelectView';
+import axios from 'axios';
+
 
 function SubHeaderView( props ) {
 

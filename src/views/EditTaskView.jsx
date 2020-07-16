@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import SelectView from './SelectView';
 import ApiResponseView from './ApiResponseView';
@@ -6,11 +6,12 @@ import ButtonWithLoader from './ButtonWithLoader';
 import { http } from '../modules';
 import _ from 'lodash';
 
-function TaskFormView( payload ) {
+ function EditTaskView( payload ) {
     
     const [ state, setState ] = useState( {
         isLoading: false,
         errorMessage: '',
+        rows:[],
         formData: {
             taskDescription: '',
             location_id: '',
@@ -29,8 +30,37 @@ function TaskFormView( payload ) {
         }
     } );
 
-    const { formData } = state;
-    const { locations, allUsers, frequencies, categories, areas } = payload;
+    const { formData,rows } = state;
+    const { locations, allUsers, frequencies, categories, areas, rowData } = payload;
+
+    const loadData = () => {
+        http.task.getAll().then( ( response ) => {
+            
+            const rows=response.payload.objectList;
+            // console.log(rows)
+            setState( { ...state, rows: rows, isLoading: false } );
+
+        } ).catch( ( e ) => {
+
+            setState( { ...state, isLoading: false, errorMessage: e.message } );
+
+        } );
+    };
+
+    useEffect( () => {
+        setState({
+            formData: {
+                taskDescription: rowData.taskDescription,
+                locationId: rowData.locationId,
+                manPower: rowData.manPower,
+                categoryId: rowData.categoryId,
+                areaId: rowData.areaId,
+                frequencyId: rowData.frequencyId,
+                assignToId: rowData.assignToId
+            }
+        })
+    }, [] );
+
 
     const onTaskSubmit = ( e ) => {
         e.preventDefault();
@@ -43,7 +73,7 @@ function TaskFormView( payload ) {
         _formData.areaId = parseInt( _formData.areaId );
         _formData.manPower = parseInt( _formData.manPower );
 
-        http.task.add( _formData ).then( ( response ) => {
+        http.task.edit( rowData.id,_formData ).then( ( response ) => {
 
             setState( { ...state, errorMessage: response.message } );
             window.location.reload();
@@ -53,6 +83,10 @@ function TaskFormView( payload ) {
             setState( { ...state, errorMessage: e.message } );
 
         } );
+
+    }
+
+    const handlechange = () =>{
 
     }
 
@@ -70,9 +104,10 @@ function TaskFormView( payload ) {
                         <h6 className='heading heading--h6'>Brief</h6>
                         <div className='inputField'>
                             <input type='text' className='inputField__input' 
-                                value={ formData.taskDescription }
+                                defaultValue={ rowData.taskDescription }
                                 onChange={ (e) => {
                                     setState( { ...state, formData: { ...state.formData, taskDescription: e.currentTarget.value } } );
+                                    handlechange(e.target.value)
                                 } }
                                 required
                             />
@@ -83,7 +118,7 @@ function TaskFormView( payload ) {
                         <SelectView
                             { ...{
                                 required: true,
-                                value: formData.location_id,
+                                value: rowData.locationId,
                                 type: 'location',
                                 options: locations,
                                 onSelect:(e) => {
@@ -98,7 +133,7 @@ function TaskFormView( payload ) {
                         <h6 className='heading heading--h6'>Man Power</h6>
                         <div className='inputField'>
                             <input type='number' min='1' className='inputField__input' 
-                                value={ formData.manPower }
+                                defaultValue={ rowData.manPower }
                                 onChange={ (e) => {
                                     setState( { ...state, formData: { ...state.formData, manPower: e.currentTarget.value } } );
                                 } }
@@ -111,7 +146,7 @@ function TaskFormView( payload ) {
                         <SelectView
                             { ...{
                                 required: true,
-                                value: formData.assignToId,
+                                value: rowData.assignToId,
                                 type: 'allUser',
                                 options: allUsers,
                                 onSelect:(e) => {
@@ -127,7 +162,7 @@ function TaskFormView( payload ) {
                         <SelectView
                             { ...{
                                 required: true,
-                                value: formData.areaId,
+                                value: rowData.areaId,
                                 type: 'area',
                                 options: areas,
                                 onSelect:(e) => {
@@ -141,7 +176,7 @@ function TaskFormView( payload ) {
                         <SelectView
                             { ...{
                                 required: true,
-                                value: formData.frequencyId,
+                                value: rowData.frequencyId,
                                 type: 'frequency',
                                 options: frequencies,
                                 onSelect:(e) => {
@@ -157,7 +192,7 @@ function TaskFormView( payload ) {
                         <SelectView
                             { ...{
                                 required: true,
-                                value: formData.categoryId,
+                                value: rowData.categoryId,
                                 type: 'category',
                                 options: categories,
                                 onSelect:(e) => {
@@ -185,6 +220,7 @@ function TaskFormView( payload ) {
 
 }
 
+
 export default connect( ( { locationReducer, categoryReducer, areaReducer } ) => {
 
     const { allUsers, frequencies, locations } = locationReducer;
@@ -198,4 +234,5 @@ export default connect( ( { locationReducer, categoryReducer, areaReducer } ) =>
         categories,
         areas
     };
-}, null )( TaskFormView );
+}, null )( EditTaskView );
+

@@ -55,6 +55,9 @@ export const http = {
         },
         add( data ) {
             return Axios.post('/addArea', data );
+        },
+        delete( id ) {
+            return Axios.delete(`/delete/area/${id}`);
         }
     },
     category: {
@@ -63,6 +66,9 @@ export const http = {
         },
         add( data ) {
             return Axios.post('/addCategory', data );
+        },
+        delete( id ) {
+            return Axios.delete(`/delete/category/${id}`);
         }
     },
     getCommonApi() {
@@ -81,6 +87,21 @@ export const http = {
         },
         delete( id ) {
             return Axios.delete(`/delete/task/${id}`);
+        },
+        accept( data ){
+            return Axios.put('/update/task', data);
+        },
+        reject( data ){
+            return Axios.put('/reject/task', data);
+        },
+        edit(id,data){
+            return Axios.put(`/edit/task/${id}`,data);
+        },
+        getpie(){
+            return Axios.get('/getPieChartsValues')
+        },
+        getbar(){
+            return Axios.get('/getBarGraphValues')
         }
     }
 }
